@@ -6,14 +6,14 @@ import (
 )
 
 func IsGitRepo() bool {
-	cmd := exec.Command("git","rev-parse", "--is-inside-work-tree")
+	cmd := exec.Command("git", "rev-parse", "--is-inside-work-tree")
 
-    err := cmd.Run()
+	err := cmd.Run()
 
-    if err != nil {
-        log.Fatal(err)
-		return false;
-    }
+	if err != nil {
+		log.Fatal(err)
+		return false
+	}
 
 	return true
 }

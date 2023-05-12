@@ -9,44 +9,42 @@ import (
 )
 
 func main() {
-    cli.VersionPrinter = func(cCtx *cli.Context) {
-        printVersion()
-    }
+	cli.VersionPrinter = func(cCtx *cli.Context) {
+		printVersion()
+	}
 
-    app := &cli.App{
+	app := &cli.App{
 		Version: diagnostics.Version,
-        Commands: []*cli.Command{
-            {
-                Name:    "begin",
-                Aliases: []string{"b"},
-                Usage:   "begin pairing mode",
-                Action: func(*cli.Context) error {
-                    Begin()
-                    return nil
-                },
-            },
-            {
-                Name:    "end",
-                Aliases: []string{"e"},
-                Usage:   "end pairing mode",
-                Action: func(*cli.Context) error {
-                    fmt.Println("ending pairing mode")
-                    return nil
-                },
-            },
-            {
-                Name:    "status",
-                Aliases: []string{"s"},
-                Usage:   "show pairing status",
-                Action: func(*cli.Context) error {
+		Commands: []*cli.Command{
+			{
+				Name:    "begin",
+				Aliases: []string{"b"},
+				Usage:   "begin pairing mode",
+				Action: func(*cli.Context) error {
+					Begin()
+					return nil
+				},
+			},
+			{
+				Name:    "end",
+				Aliases: []string{"e"},
+				Usage:   "end pairing mode",
+				Action: func(*cli.Context) error {
+					fmt.Println("ending pairing mode")
+					return nil
+				},
+			},
+			{
+				Name:    "status",
+				Aliases: []string{"s"},
+				Usage:   "show pairing status",
+				Action: func(*cli.Context) error {
 					Status()
-                    return nil
-                },
-            },
-
-        },
-    }
-
+					return nil
+				},
+			},
+		},
+	}
 
 	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)

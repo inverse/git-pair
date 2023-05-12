@@ -21,3 +21,8 @@ tasks:
       - go clean
       - rm bin/*
     silent: true
+  format:
+    desc: Format code
+    cmds:
+      - go fmt github.com/... || true
+    silent: true
