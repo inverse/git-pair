@@ -9,7 +9,12 @@ import (
 )
 
 func main() {
+    cli.VersionPrinter = func(cCtx *cli.Context) {
+        printVersion()
+    }
+
     app := &cli.App{
+		Version: diagnostics.Version,
         Commands: []*cli.Command{
             {
                 Name:    "begin",
@@ -35,15 +40,6 @@ func main() {
                 Usage:   "show pairing status",
                 Action: func(*cli.Context) error {
                     fmt.Println("status info")
-                    return nil
-                },
-            },
-            {
-                Name:    "version",
-                Aliases: []string{"v"},
-                Usage:   "show version information",
-                Action: func(cCtx *cli.Context) error {
-                    printVersion()
                     return nil
                 },
             },
