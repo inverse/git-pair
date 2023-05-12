@@ -19,4 +19,5 @@ tasks:
     desc: Clean project
     cmds:
       - go clean
+      - rm bin/*
     silent: true
