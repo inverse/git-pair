@@ -21,7 +21,7 @@ func main() {
                 Aliases: []string{"b"},
                 Usage:   "begin pairing mode",
                 Action: func(*cli.Context) error {
-                    fmt.Println("beginning pairing mode")
+                    Begin()
                     return nil
                 },
             },
@@ -39,10 +39,11 @@ func main() {
                 Aliases: []string{"s"},
                 Usage:   "show pairing status",
                 Action: func(*cli.Context) error {
-                    fmt.Println("status info")
+					Status()
                     return nil
                 },
             },
+
         },
     }
 
