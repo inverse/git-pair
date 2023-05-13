@@ -6,8 +6,6 @@ import (
 )
 
 func Status() {
-	fmt.Println("Status Info")
-
 	if !git.IsGitRepo() {
 		fmt.Println("Not executed from a git repository")
 		return
