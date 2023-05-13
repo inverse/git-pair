@@ -1,20 +1,14 @@
 package git
 
 import (
-	"errors"
 	"fmt"
+	"github.com/inverse/git-pair/internal/util"
 	"log"
-	"os"
 	"os/exec"
 	"strings"
 )
 
 const templateFileName string = ".git/template"
-
-func checkFileExists(filePath string) bool {
-	_, error := os.Stat(filePath)
-	return !errors.Is(error, os.ErrNotExist)
-}
 
 func templateFilePath() string {
 	out, err := exec.Command("git", "rev-parse", "--show-toplevel").Output()
@@ -28,7 +22,7 @@ func templateFilePath() string {
 
 func templateFileExists() bool {
 	templatePath := templateFilePath()
-	return checkFileExists(templatePath)
+	return util.CheckFileExists(templatePath)
 }
 
 func IsGitRepo() bool {
