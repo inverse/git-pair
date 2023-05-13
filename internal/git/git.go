@@ -41,7 +41,7 @@ func IsGitRepo() bool {
 }
 
 func GetRepoContributors() []string {
-	out, err := exec.Command("git", "shortlog", "-e", "-s").CombinedOutput()
+	out, err := exec.Command("git", "shortlog", "-e", "-s").Output()
 	if err != nil {
 		fmt.Println(err)
 	}
