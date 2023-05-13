@@ -6,8 +6,17 @@ import (
 )
 
 func Status() {
-	fmt.Println("status info")
+	fmt.Println("Status Info")
 
-	fmt.Println(git.IsGitRepo())
+	if !git.IsGitRepo() {
+		fmt.Println("Not executed from a git repository")
+		return
+	}
 
+	if !git.PairingModeEnabled() {
+		fmt.Println("Pairing mode is not enabled")
+		return
+	}
+
+	fmt.Println("Pairing mode is enabled")
 }
