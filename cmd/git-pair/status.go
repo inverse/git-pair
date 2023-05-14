@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/inverse/git-pair/internal/git"
 )
 
@@ -17,4 +18,15 @@ func Status() {
 	}
 
 	fmt.Println("Pairing mode is enabled")
+
+	contributors, err := git.ReadTemplateFile()
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for _, contributor := range contributors {
+		fmt.Printf("- %s\n", contributor)
+	}
 }
