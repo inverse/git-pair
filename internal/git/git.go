@@ -47,10 +47,10 @@ func IsGitRepo() bool {
 	return true
 }
 
-func GetRepoContributors() []string {
+func GetRepoContributors() ([]string, error) {
 	out, err := exec.Command("git", "shortlog", "-e", "-s", getCurrentBranch()).Output()
 	if err != nil {
-		fmt.Println(err)
+		return nil, err
 	}
 
 	contributors := strings.Split(string(out), "\r\n")
@@ -58,7 +58,7 @@ func GetRepoContributors() []string {
 		contributors[index] = strings.TrimSpace(contributor[strings.IndexByte(contributor, '\t'):])
 	}
 
-	return contributors
+	return contributors, nil
 }
 
 func PairingModeEnabled() bool {

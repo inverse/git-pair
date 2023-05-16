@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/inverse/git-pair/internal/contributors"
 	"github.com/inverse/git-pair/internal/git"
 )
 
@@ -12,9 +13,17 @@ func Begin() {
 		return
 	}
 
-	git.GetRepoContributors()
+	localContributors, err := contributors.GetLocalContributors()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
-	contributors := []string{"Malachi Soord <inverse.chi@gmail.com"}
+	repoContributors, err := git.GetRepoContributors()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
-	git.EnablePairingMode(contributors)
+	git.EnablePairingMode(append(localContributors, repoContributors...))
 }
