@@ -28,6 +28,16 @@ func templateFileExists() bool {
 	return util.CheckFileExists(templatePath)
 }
 
+func getCurrentBranch() string {
+	out, err := exec.Command("git", "branch", "--show-current").Output()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return strings.TrimSpace(string(out))
+}
+
 func IsGitRepo() bool {
 	cmd := exec.Command("git", "rev-parse", "--is-inside-work-tree")
 	if err := cmd.Run(); err != nil {
@@ -38,14 +48,15 @@ func IsGitRepo() bool {
 }
 
 func GetRepoContributors() []string {
-	out, err := exec.Command("git", "shortlog", "-e", "-s").Output()
+	out, err := exec.Command("git", "shortlog", "-e", "-s", getCurrentBranch()).Output()
 	if err != nil {
 		fmt.Println(err)
 	}
 
 	contributors := strings.Split(string(out), "\r\n")
-
-	fmt.Println(contributors)
+	for index, contributor := range contributors {
+		contributors[index] = strings.TrimSpace(contributor[strings.IndexByte(contributor, '\t'):])
+	}
 
 	return contributors
 }
