@@ -38,6 +38,36 @@ func getCurrentBranch() string {
 	return strings.TrimSpace(string(out))
 }
 
+func createTemplateFile(contributors []string, templateFilePath string) error {
+	templateFile, err := os.Create(templateFilePath)
+	if err != nil {
+		return err
+	}
+
+	defer templateFile.Close()
+
+	for _, contributor := range contributors {
+		_, err := templateFile.WriteString(contributor + "\n")
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func enableGitTemplateConfig(templateFilePath string) error {
+	_, err := exec.Command("git", "config", "commit.template", templateFilePath).Output()
+
+	return err
+}
+
+func disableGitTemplateConfig() error {
+	_, err := exec.Command("git", "config", "--unset", "commit.template").Output()
+
+	return err
+}
+
 func IsGitRepo() bool {
 	cmd := exec.Command("git", "rev-parse", "--is-inside-work-tree")
 	if err := cmd.Run(); err != nil {
@@ -65,28 +95,21 @@ func PairingModeEnabled() bool {
 	return templateFileExists()
 }
 
-func DisablePairingMode() {
+func DisablePairingMode() error {
 	templateFilePath := templateFilePath()
 	os.Remove(templateFilePath)
+
+	return disableGitTemplateConfig()
 }
 
-func EnablePairingMode(contributors []string) {
+func EnablePairingMode(contributors []string) error {
 	templateFilePath := templateFilePath()
-
-	templateFile, err := os.Create(templateFilePath)
+	err := createTemplateFile(contributors, templateFilePath)
 	if err != nil {
-		log.Fatal(err)
-		return
+		return err
 	}
 
-	defer templateFile.Close()
-
-	for _, contributor := range contributors {
-		_, err := templateFile.WriteString(contributor + "\n")
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
+	return enableGitTemplateConfig(templateFilePath)
 }
 
 func ReadTemplateFile() ([]string, error) {

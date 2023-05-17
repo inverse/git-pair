@@ -25,5 +25,9 @@ func Begin() {
 		return
 	}
 
-	git.EnablePairingMode(append(localContributors, repoContributors...))
+	err = git.EnablePairingMode(append(localContributors, repoContributors...))
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 }

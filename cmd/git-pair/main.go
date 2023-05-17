@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/inverse/git-pair/internal/diagnostics"
-	"github.com/urfave/cli/v2"
 	"log"
 	"os"
+
+	"github.com/inverse/git-pair/internal/diagnostics"
+	"github.com/urfave/cli/v2"
 )
 
 func main() {
@@ -30,7 +31,7 @@ func main() {
 				Aliases: []string{"e"},
 				Usage:   "end pairing mode",
 				Action: func(*cli.Context) error {
-					fmt.Println("ending pairing mode")
+					End()
 					return nil
 				},
 			},
