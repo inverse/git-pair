@@ -13,6 +13,10 @@ const contributorFileName = ".contributors.txt"
 func GetLocalContributors() ([]string, error) {
 	homeDir := util.GetHomeDir()
 	file, err := os.Open(fmt.Sprintf("%s/%s", homeDir, contributorFileName))
+	if os.IsNotExist(err) {
+		return make([]string, 0), nil
+	}
+
 	if err != nil {
 		return nil, err
 	}

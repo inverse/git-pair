@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/AlecAivazis/survey/v2"
 	"github.com/inverse/git-pair/internal/contributors"
 	"github.com/inverse/git-pair/internal/git"
 )
@@ -25,7 +26,26 @@ func Begin() {
 		return
 	}
 
-	err = git.EnablePairingMode(append(localContributors, repoContributors...))
+	allContributors := append(localContributors, repoContributors...)
+
+	selectedContributors := []string{}
+	prompt := &survey.MultiSelect{
+		Message: "Who's pairing:",
+		Options: allContributors,
+	}
+
+	err = survey.AskOne(prompt, &selectedContributors)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	if len(selectedContributors) == 0 {
+		fmt.Println("You must select at least one contributor")
+		return
+	}
+
+	err = git.EnablePairingMode(selectedContributors)
 	if err != nil {
 		fmt.Println(err)
 		return
