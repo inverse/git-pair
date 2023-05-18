@@ -27,3 +27,7 @@ tasks:
     cmds:
       - gofmt -s -w .
     silent: true
+  lint:
+    desc: Lint code
+    cmds:
+      - golangci-lint run 
