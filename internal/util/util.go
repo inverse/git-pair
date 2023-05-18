@@ -18,3 +18,18 @@ func GetHomeDir() string {
 	}
 	return dirname
 }
+
+func UniqueStrings(input []string) []string {
+	uniqueMap := make(map[string]struct{})
+
+	for _, str := range input {
+		uniqueMap[str] = struct{}{}
+	}
+
+	uniqueSlice := make([]string, 0, len(uniqueMap))
+	for str := range uniqueMap {
+		uniqueSlice = append(uniqueSlice, str)
+	}
+
+	return uniqueSlice
+}

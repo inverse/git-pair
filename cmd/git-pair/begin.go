@@ -6,6 +6,7 @@ import (
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/inverse/git-pair/internal/contributors"
 	"github.com/inverse/git-pair/internal/git"
+	"github.com/inverse/git-pair/internal/util"
 )
 
 func Begin() {
@@ -26,7 +27,7 @@ func Begin() {
 		return
 	}
 
-	allContributors := append(localContributors, repoContributors...)
+	allContributors := util.UniqueStrings(append(localContributors, repoContributors...))
 
 	selectedContributors := []string{}
 	prompt := &survey.MultiSelect{
