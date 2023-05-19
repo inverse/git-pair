@@ -51,4 +51,6 @@ func Begin() {
 		fmt.Println(err)
 		return
 	}
+
+	fmt.Println("🚀 Pairing mode started")
 }

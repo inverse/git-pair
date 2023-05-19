@@ -18,4 +18,6 @@ func End() {
 		fmt.Println(err)
 		return
 	}
+
+	fmt.Println("👋 Finished pairing mode")
 }

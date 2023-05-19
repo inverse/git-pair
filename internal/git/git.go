@@ -24,8 +24,8 @@ func templateFilePath() string {
 }
 
 func templateFileExists() bool {
-	templatePath := templateFilePath()
-	return util.CheckFileExists(templatePath)
+	templateFilePath := templateFilePath()
+	return util.CheckFileExists(templateFilePath)
 }
 
 func getCurrentBranch() string {
@@ -97,6 +97,10 @@ func PairingModeEnabled() bool {
 
 func DisablePairingMode() error {
 	templateFilePath := templateFilePath()
+	if !util.CheckFileExists(templateFilePath) {
+		return nil
+	}
+
 	os.Remove(templateFilePath)
 
 	return disableGitTemplateConfig()
