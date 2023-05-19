@@ -3,18 +3,18 @@
 A simple CLI app to make it easier for pairing for co-authoring commits.
 ## Usage
 
-by default it will look up commit authors from the git history of the repo you are in buy you can also maintain a list of authors within your home
-directory in a file called `~/.contributors.txt`. Using the `Name <email>` format.
+By default the tool will look up commit authors from the git history of the repo you are in. However you can also maintain a list of authors within your home
+directory in a file called `~/.contributors.txt`. This file uses the `Name <email>` format.
 
-To get started run `git-pair begin`, selecting the contributors in the pairing session. 
+To get started run `git-pair begin`, selecting the contributors for the pairing session. 
 
+You can find out the current state of contributors running `git-pair status`.
 
-One you are done with that pairing session just run `git-pair end`. You can find out the current state of contributors running `git-pair statius`..
-
+One you are done with that pairing session just run `git-pair end`. 
 
 ## Developing 
 
-Built using asdf simply install dependencies using that or a compatible tool.
+Built using asdf for required dependencies.
 
 ### Building
 
