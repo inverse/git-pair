@@ -1,6 +1,6 @@
-# Go Pair
+# git-pair
 
-A simple CLI app to make it easier for pairing for co-authoring commits.
+A simple CLI app to make it easier for git based pairing for co-authoring commits.
 ## Usage
 
 By default the tool will look up commit authors from the git history of the repo you are in. However you can also maintain a list of authors within your home
@@ -14,7 +14,7 @@ One you are done with that pairing session just run `git-pair end`.
 
 ## Developing 
 
-Built using asdf for required dependencies.
+Built using asdf for managing required development dependencies.
 
 ### Building
 
