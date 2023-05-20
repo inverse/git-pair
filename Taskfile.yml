@@ -6,6 +6,7 @@ vars:
 tasks:
   build:
     desc: Build project
+    deps: [clean]
     cmds:
       - PROJECT={{.PROJECT}} goreleaser build --single-target --snapshot --clean
     silent: true
@@ -26,5 +27,6 @@ tasks:
       - golangci-lint run 
   goreleaser: 
     desc: Perform dev goreleaser
+    deps: [clean]
     cmds:
       - PROJECT={{.PROJECT}} goreleaser release --snapshot --clean --skip-publish
