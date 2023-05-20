@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request: ~
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get Go version from .tool-versions
+        run: echo "GO_VERSION=$(cat .tool-versions | grep -oP 'golang \K((\w+.)+\w+)')" >> $GITHUB_ENV
+      - name: Get golangci-lint version from .tool-versions
+        run: echo "GOLANGCI_LINT_VERSION=$(cat .tool-versions | grep -oP 'golangci-lint \K((\w+.)+\w+)')" >> $GITHUB_ENV
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '${{ env.GO_VERSION }}'
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: 'v${{ env.GOLANGCI_LINT_VERSION }}'
