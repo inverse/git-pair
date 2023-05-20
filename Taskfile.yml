@@ -2,25 +2,19 @@ version: '3'
 
 vars:
   PROJECT: github.com/inverse/git-pair
-  RELEASE: dev
-  COMMIT:  {sh: git rev-parse --short HEAD 2> /dev/null || echo 'unknown'}
-  BUILD_DATE: {sh: date -u +'%Y-%m-%dT%H:%M:%SZ'}
-  BUILD_DIR: bin
 
 tasks:
   build:
     desc: Build project
+    deps: [clean]
     cmds:
-      - |
-        go build \
-        -trimpath -ldflags "-X {{.PROJECT}}/internal/diagnostics.Version={{.RELEASE}} -X {{.PROJECT}}/internal/diagnostics.Commit={{.COMMIT}} -X {{.PROJECT}}/internal/diagnostics.BuildDate={{.BUILD_DATE}}" \
-        -o bin/git-pair {{.PROJECT}}/cmd/git-pair
+      - PROJECT={{.PROJECT}} goreleaser build --single-target --snapshot --clean
     silent: true
   clean:
     desc: Clean project
     cmds:
       - go clean
-      - rm bin/*
+      - rm -rf dist/*
     silent: true
   format:
     desc: Format code
@@ -31,3 +25,8 @@ tasks:
     desc: Lint code
     cmds:
       - golangci-lint run 
+  goreleaser: 
+    desc: Perform dev goreleaser
+    deps: [clean]
+    cmds:
+      - PROJECT={{.PROJECT}} goreleaser release --snapshot --clean --skip-publish
