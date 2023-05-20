@@ -6,7 +6,7 @@ import (
 	"github.com/inverse/git-pair/internal/git"
 )
 
-func Status() {
+func Info() {
 	if !git.IsGitRepo() {
 		fmt.Println("Not executed from a git repository")
 		return
@@ -17,7 +17,7 @@ func Status() {
 		return
 	}
 
-	fmt.Println("Pairing mode is enabled")
+	fmt.Println("🔧 Pairing mode is enabled")
 
 	contributors, err := git.ReadTemplateFile()
 

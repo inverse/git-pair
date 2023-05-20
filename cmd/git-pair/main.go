@@ -18,11 +18,11 @@ func main() {
 		Version: diagnostics.Version,
 		Commands: []*cli.Command{
 			{
-				Name:    "begin",
-				Aliases: []string{"b"},
-				Usage:   "begin pairing mode",
+				Name:    "start",
+				Aliases: []string{"s"},
+				Usage:   "start pairing mode",
 				Action: func(*cli.Context) error {
-					Begin()
+					Start()
 					return nil
 				},
 			},
@@ -36,11 +36,11 @@ func main() {
 				},
 			},
 			{
-				Name:    "status",
-				Aliases: []string{"s"},
-				Usage:   "show pairing status",
+				Name:    "info",
+				Aliases: []string{"i"},
+				Usage:   "show pairing info",
 				Action: func(*cli.Context) error {
-					Status()
+					Info()
 					return nil
 				},
 			},

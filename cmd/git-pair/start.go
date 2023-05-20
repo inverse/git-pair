@@ -9,7 +9,7 @@ import (
 	"github.com/inverse/git-pair/internal/util"
 )
 
-func Begin() {
+func Start() {
 	if !git.IsGitRepo() {
 		fmt.Println("Not executed from a git repository")
 		return
