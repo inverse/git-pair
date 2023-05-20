@@ -10,9 +10,6 @@ import (
 )
 
 func Begin() {
-
-	var x = 500
-
 	if !git.IsGitRepo() {
 		fmt.Println("Not executed from a git repository")
 		return
