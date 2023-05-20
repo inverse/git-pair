@@ -13,7 +13,6 @@ builds:
       - darwin
     ldflags:
       - -s -w -X {{.Env.PROJECT}}/internal/diagnostics.Version={{.Version}} -X {{.Env.PROJECT}}/internal/diagnostics.Commit={{.Commit}} -X {{.Env.PROJECT}}/internal/diagnostics.BuildDate={{.Date}}
-
 archives:
   - format: tar.gz
     name_template: >-
@@ -34,6 +33,9 @@ aurs:
     git_url: 'ssh://aur@aur.archlinux.org/git-pair-bin.git'
     private_key: '{{ .Env.AUR_KEY }}'
     license: 'MIT'
+release:
+  draft: true
+  name_template: '{{.ProjectName}}-v{{.Version}}'
 checksum:
   name_template: 'checksums.txt'
 snapshot:
