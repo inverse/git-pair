@@ -25,6 +25,6 @@ tasks:
     cmds:
       - golangci-lint run 
   goreleaser: 
-    desc: Perform goreleaser
+    desc: Perform dev goreleaser
     cmds:
-      - PROJECT={{.PROJECT}} goreleaser release --snapshot --clean
+      - PROJECT={{.PROJECT}} goreleaser release --snapshot --clean --skip-publish

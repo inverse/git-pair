@@ -22,6 +22,8 @@ Built using asdf for managing required development dependencies.
 task build
 ```
 
+And you'll find the binary for your architecture in the `dist/` directory.
+
 ### Format
 
 ```bash
