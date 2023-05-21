@@ -1,5 +1,8 @@
 # git-pair
 
+[![CI](https://github.com/inverse/git-pair/actions/workflows/ci.yml/badge.svg)](https://github.com/inverse/git-pair/actions/workflows/ci.yml)
+![GitHub](https://img.shields.io/github/license/inverse/git-pair)
+
 A simple CLI app to make it easier for git based pairing for co-authoring commits.
 
 Sessions are scoped to git repositories by leveraging commit templates.
