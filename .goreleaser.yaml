@@ -24,15 +24,15 @@ archives:
     format_overrides:
     - goos: windows
       format: zip
-# aurs:
-#   - name: git-pair-bin
-#     description: 'A simple CLI app to make it easier for pairing for co-authoring commits.'
-#     maintainers:
-#       - 'Malachi Soord <me@malachisoord.com>'
-#     homepage: 'https://github.com/inverse/git-pair/'
-#     git_url: 'ssh://aur@aur.archlinux.org/git-pair-bin.git'
-#     private_key: '{{ .Env.AUR_KEY }}'
-#     license: 'MIT'
+aurs:
+  - name: git-pair-bin
+    description: 'A simple CLI app to make it easier for pairing for co-authoring commits.'
+    maintainers:
+      - 'Malachi Soord <me@malachisoord.com>'
+    homepage: 'https://github.com/inverse/git-pair/'
+    git_url: 'ssh://aur@aur.archlinux.org/git-pair-bin.git'
+    private_key: '{{ .Env.AUR_KEY }}'
+    license: 'MIT'
 release:
   draft: true
   name_template: '{{.ProjectName}}-v{{.Version}}'
