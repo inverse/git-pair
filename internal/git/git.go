@@ -83,9 +83,19 @@ func GetRepoContributors() ([]string, error) {
 		return nil, err
 	}
 
-	contributors := strings.Split(string(out), "\r\n")
+	toRemove := []int{}
+	contributors := strings.Split(string(out), "\n")
 	for index, contributor := range contributors {
-		contributors[index] = strings.TrimSpace(contributor[strings.IndexByte(contributor, '\t'):])
+		tabIndex := strings.IndexByte(contributor, '\t')
+		if tabIndex == -1 {
+			toRemove = append(toRemove, index)
+			continue
+		}
+		contributors[index] = strings.TrimSpace(contributor[tabIndex:])
+	}
+
+	for _, index := range toRemove {
+		contributors = append(contributors[:index], contributors[index+1:]...)
 	}
 
 	return contributors, nil
