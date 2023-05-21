@@ -33,9 +33,6 @@ aurs:
     git_url: 'ssh://aur@aur.archlinux.org/git-pair-bin.git'
     private_key: '{{ .Env.AUR_KEY }}'
     license: 'MIT'
-    commit_author:
-      name: Malachi Soord
-      email: inverse.chi@gmail.com
     provides:
       - git-pair
     depends:
