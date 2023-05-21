@@ -3,9 +3,7 @@
 [![CI](https://github.com/inverse/git-pair/actions/workflows/ci.yml/badge.svg)](https://github.com/inverse/git-pair/actions/workflows/ci.yml)
 ![GitHub](https://img.shields.io/github/license/inverse/git-pair)
 
-A simple CLI app to make it easier for git based pairing for co-authoring commits.
-
-Sessions are scoped to git repositories by leveraging commit templates.
+A tool to make it easier for git based pairing for co-authoring commits.
 
 ## Usage
 
@@ -17,6 +15,8 @@ To get started run `git-pair [s]tart`, selecting the contributors for the pairin
 You can find out the current state of contributors running `git-pair [i]nfo`.
 
 One you are done with that pairing session just run `git-pair [e]nd`. 
+
+_Note: Sessions are scoped to git repositories by leveraging commit templates._
 
 ## Developing 
 
