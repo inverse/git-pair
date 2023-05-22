@@ -27,14 +27,14 @@ jobs:
         uses: supplypike/setup-bin@v3
         with:
           uri: 'https://github.com/goreleaser/nfpm/releases/download/v${{ env.NFPM_VERSION }}/nfpm_${{ env.NFPM_VERSION }}_Linux_x86_64.tar.gz'
-              name: 'nfpm'
-              version: ${{ env.NFPM_VERSION }}'
+          name: 'nfpm'
+          version: ${{ env.NFPM_VERSION }}'
       - name: Setup fury
         uses: supplypike/setup-bin@v3
         with:
           uri: 'https://github.com/gemfury/cli/releases/download/v0.20.1/fury_0.20.1_Linux_64bit.tar.gz'
-              name: 'fury'
-              version: '0.20.1'
+          name: 'fury'
+          version: '0.20.1'
       - name: Get goreleaser version from .tool-versions
         run: echo "GORELEASER_VERSION=$(cat .tool-versions | grep -oP 'goreleaser \K((\w+.)+\w+)')" >> $GITHUB_ENV
       - uses: goreleaser/goreleaser-action@v4
