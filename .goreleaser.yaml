@@ -47,6 +47,7 @@ brews:
       name: homebrew-tap
     folder: Formula
     description: 'A simple CLI app to make it easier for pairing for co-authoring commits'
+    homepage: 'https://github.com/inverse/git-pair/'
     test: |
       system "#{bin}/git-pair --version"
 release:
