@@ -17,6 +17,38 @@ For arch:
 yay -S git-pair-bin
 ```
 
+For APT based distro:
+
+```
+ /etc/apt/sources.list.d/inverse-fury.list
+ ```
+
+ ```
+ deb [trusted=yes] https://apt.fury.io/inverse/ /
+```
+
+```bash
+apt-get update && apt-get install git-pair
+```
+
+For RPM based distro: 
+
+```
+/etc/yum.repos.d/inverse-fury.repo
+```
+
+```
+[fury]
+name=Inverse Private Repo
+baseurl=https://yum.fury.io/inverse/
+enabled=1
+gpgcheck=0
+```
+
+```bash
+dnf install git-pair
+```
+
 Binaries are also distributed in the [releases](https://github.com/inverse/git-pair/releases) page. Simply download the archive for your architecture and unpack and add the binary to your path.
 
 ## Usage
