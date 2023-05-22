@@ -28,7 +28,7 @@ jobs:
         with:
           uri: 'https://github.com/goreleaser/nfpm/releases/download/v${{ env.NFPM_VERSION }}/nfpm_${{ env.NFPM_VERSION }}_Linux_x86_64.tar.gz'
           name: 'nfpm'
-          version: ${{ env.NFPM_VERSION }}'
+          version: '${{ env.NFPM_VERSION }}'
       - name: Setup fury
         uses: supplypike/setup-bin@v3
         with:
