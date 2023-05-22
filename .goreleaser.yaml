@@ -48,8 +48,23 @@ brews:
     folder: Formula
     description: 'A simple CLI app to make it easier for pairing for co-authoring commits'
     homepage: 'https://github.com/inverse/git-pair/'
+    license: MIT
     test: |
       system "#{bin}/git-pair --version"
+nfpms:
+  - package_name: git-pair
+    vendor: inverse
+    homepage: 'https://github.com/inverse/git-pair/'
+    maintainer: 'Malachi Soord <me@malachisoord.com>'
+    description: 'A simple CLI app to make it easier for pairing for co-authoring commits'
+    license: MIT
+    formats:
+      - deb
+      - rpm
+    provides:
+      - git-pair
+    recommends:
+      - git
 release:
   draft: false
   name_template: 'v{{.Version}}'
