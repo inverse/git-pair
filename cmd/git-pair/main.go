@@ -16,11 +16,12 @@ func main() {
 
 	app := &cli.App{
 		Version: diagnostics.Version,
+		Usage:   "A tool to make it easier for git based pairing for co-authoring commits",
 		Commands: []*cli.Command{
 			{
 				Name:    "start",
 				Aliases: []string{"s"},
-				Usage:   "start pairing mode",
+				Usage:   "Start pairing mode",
 				Action: func(*cli.Context) error {
 					Start()
 					return nil
@@ -29,7 +30,7 @@ func main() {
 			{
 				Name:    "end",
 				Aliases: []string{"e"},
-				Usage:   "end pairing mode",
+				Usage:   "End pairing mode",
 				Action: func(*cli.Context) error {
 					End()
 					return nil
@@ -38,7 +39,7 @@ func main() {
 			{
 				Name:    "info",
 				Aliases: []string{"i"},
-				Usage:   "show pairing info",
+				Usage:   "Show pairing info",
 				Action: func(*cli.Context) error {
 					Info()
 					return nil
