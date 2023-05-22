@@ -5,6 +5,20 @@
 
 A tool to make it easier for git based pairing for co-authoring commits.
 
+## Installation
+
+For MacOS
+```bash
+brew install inverse/homebrew-tap/git-pair
+```
+
+For arch: 
+```bash
+yay -S git-pair-bin
+```
+
+Binaries are also distributed in the [releases](https://github.com/inverse/git-pair/releases) page. Simply download the archive for your architecture and unpack and add the binary to your path.
+
 ## Usage
 
 By default the tool will look up commit authors from the git history of the repo you are in. However, you can also maintain a list of authors within your home
