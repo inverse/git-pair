@@ -26,7 +26,7 @@ archives:
       format: zip
 aurs:
   - name: git-pair-bin
-    description: 'A simple CLI app to make it easier for pairing for co-authoring commits.'
+    description: 'A simple CLI app to make it easier for pairing for co-authoring commits'
     maintainers:
       - 'Malachi Soord <me@malachisoord.com>'
     homepage: 'https://github.com/inverse/git-pair/'
@@ -40,6 +40,15 @@ aurs:
     package: |-
       install -Dm755 "./git-pair" "$pkgdir/usr/bin/git-pair"
       install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/git-pair/LICENSE"
+brews:
+  - name: git-pair
+    tap:
+      owner: inverse
+      name: homebrew-tap
+    folder: Formula
+    description: 'A simple CLI app to make it easier for pairing for co-authoring commits'
+    test: |
+      system "#{bin}/git-pair --version"
 release:
   draft: false
   name_template: 'v{{.Version}}'
