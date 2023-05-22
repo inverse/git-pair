@@ -7,35 +7,33 @@ A tool to make it easier for git based pairing for co-authoring commits.
 
 ## Installation
 
-For MacOS
+### MacOS
 ```bash
 brew install inverse/homebrew-tap/git-pair
 ```
 
-For arch: 
+### Arch: 
 ```bash
 yay -S git-pair-bin
 ```
 
-For APT based distro:
+###  APT based distro:
 
-```
- /etc/apt/sources.list.d/inverse-fury.list
- ```
+Add the following to a new file called `/etc/apt/sources.list.d/inverse-fury.list`
 
  ```
  deb [trusted=yes] https://apt.fury.io/inverse/ /
 ```
 
+And then install:
+
 ```bash
 apt-get update && apt-get install git-pair
 ```
 
-For RPM based distro: 
+### For RPM based distro: 
 
-```
-/etc/yum.repos.d/inverse-fury.repo
-```
+Add the following to a new file called `/etc/yum.repos.d/inverse-fury.repo`
 
 ```
 [fury]
@@ -44,6 +42,8 @@ baseurl=https://yum.fury.io/inverse/
 enabled=1
 gpgcheck=0
 ```
+
+And then install:
 
 ```bash
 dnf install git-pair
