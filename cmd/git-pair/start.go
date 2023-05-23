@@ -17,17 +17,21 @@ func Start() {
 
 	localContributors, err := contributors.GetLocalContributors()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Printf("Failed to load local contributors: %s\n", err)
 		return
 	}
 
 	repoContributors, err := git.GetRepoContributors()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Printf("Failed to load repo contributors: %s\n", err)
 		return
 	}
 
 	allContributors := util.UniqueStrings(append(localContributors, repoContributors...))
+	if len(allContributors) == 0 {
+		fmt.Println("No contributors found")
+		return
+	}
 
 	selectedContributors := []string{}
 	prompt := &survey.MultiSelect{

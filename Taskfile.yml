@@ -25,6 +25,7 @@ tasks:
     desc: Lint code
     cmds:
       - golangci-lint run 
+    silent: true
   goreleaser: 
     desc: Perform dev goreleaser
     deps: [clean]

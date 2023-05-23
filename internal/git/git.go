@@ -68,6 +68,24 @@ func disableGitTemplateConfig() error {
 	return err
 }
 
+func getConfigUser() (string, error) {
+	out, err := exec.Command("git", "config", "user.name").Output()
+	if err != nil {
+		return "", err
+	}
+
+	name := string(out)
+
+	out, err = exec.Command("git", "config", "user.email").Output()
+	if err != nil {
+		return "", err
+	}
+
+	email := string(out)
+
+	return fmt.Sprintf("%s <%s>", strings.TrimSpace(name), strings.TrimSpace(email)), nil
+}
+
 func IsGitRepo() bool {
 	cmd := exec.Command("git", "rev-parse", "--is-inside-work-tree")
 	if err := cmd.Run(); err != nil {
@@ -95,6 +113,16 @@ func GetRepoContributors() ([]string, error) {
 	}
 
 	for _, index := range toRemove {
+		contributors = append(contributors[:index], contributors[index+1:]...)
+	}
+
+	user, err := getConfigUser()
+	if err != nil {
+		return nil, err
+	}
+
+	index := util.IndexOf(user, contributors)
+	if index != -1 {
 		contributors = append(contributors[:index], contributors[index+1:]...)
 	}
 
