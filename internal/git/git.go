@@ -47,7 +47,7 @@ func createTemplateFile(contributors []string, templateFilePath string) error {
 	defer templateFile.Close()
 
 	for _, contributor := range contributors {
-		_, err := templateFile.WriteString(contributor + "\n")
+		_, err := templateFile.WriteString(fmt.Sprintf("Co-authored-by: %s \n", contributor))
 		if err != nil {
 			return err
 		}
