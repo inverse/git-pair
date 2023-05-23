@@ -5,6 +5,8 @@
 
 A tool to make it easier for git based pairing for co-authoring commits.
 
+![Demo](./resources/demo.gif)
+
 ## Installation
 
 ### MacOS
