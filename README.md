@@ -7,6 +7,8 @@ A tool to make it easier for git based pairing for co-authoring commits.
 
 ![Demo](./resources/demo.gif)
 
+It leverages the template feature of git by allowing you to easily managed repo scoped templates of co-authors.
+
 ## Installation
 
 ### MacOS
