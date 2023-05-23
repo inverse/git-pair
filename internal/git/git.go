@@ -13,6 +13,8 @@ import (
 
 const templateFileName string = ".git/template"
 
+const CoAuthoredBy string = "Co-authored-by: "
+
 func templateFilePath() string {
 	out, err := exec.Command("git", "rev-parse", "--show-toplevel").Output()
 
@@ -47,7 +49,7 @@ func createTemplateFile(contributors []string, templateFilePath string) error {
 	defer templateFile.Close()
 
 	for _, contributor := range contributors {
-		_, err := templateFile.WriteString(fmt.Sprintf("Co-authored-by: %s \n", contributor))
+		_, err := templateFile.WriteString(fmt.Sprintf("%s%s \n", CoAuthoredBy, contributor))
 		if err != nil {
 			return err
 		}
