@@ -1,11 +1,13 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"os"
 
 	"github.com/inverse/git-pair/internal/diagnostics"
+	"github.com/inverse/git-pair/internal/git"
 	"github.com/urfave/cli/v2"
 )
 
@@ -17,6 +19,13 @@ func main() {
 	app := &cli.App{
 		Version: diagnostics.Version,
 		Usage:   "A tool to make it easier for git based pairing for co-authoring commits",
+		Before: func(cCtx *cli.Context) error {
+			if !git.IsGitRepo() {
+				return errors.New("Not executed from a git repository")
+			}
+
+			return nil
+		},
 		Commands: []*cli.Command{
 			{
 				Name:    "start",

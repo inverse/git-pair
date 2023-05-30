@@ -10,11 +10,6 @@ import (
 )
 
 func Start() {
-	if !git.IsGitRepo() {
-		fmt.Println("Not executed from a git repository")
-		return
-	}
-
 	localContributors, err := contributors.GetLocalContributors()
 	if err != nil {
 		fmt.Printf("Failed to load local contributors: %s\n", err)
