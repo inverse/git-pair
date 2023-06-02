@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	cli.VersionPrinter = func(cCtx *cli.Context) {
+	cli.VersionPrinter = func(*cli.Context) {
 		printVersion()
 	}
 
@@ -31,8 +31,7 @@ func main() {
 				Aliases: []string{"s"},
 				Usage:   "Start pairing mode",
 				Action: func(*cli.Context) error {
-					Start()
-					return nil
+					return Start()
 				},
 			},
 			{
