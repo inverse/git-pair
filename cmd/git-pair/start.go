@@ -9,47 +9,43 @@ import (
 	"github.com/inverse/git-pair/internal/util"
 )
 
-func Start() {
+func Start() error {
 	localContributors, err := contributors.GetLocalContributors()
 	if err != nil {
-		fmt.Printf("Failed to load local contributors: %s\n", err)
-		return
+		return fmt.Errorf("Failed to load local contributors: %w", err)
 	}
 
 	repoContributors, err := git.GetRepoContributors()
 	if err != nil {
-		fmt.Printf("Failed to load repo contributors: %s\n", err)
-		return
+		return fmt.Errorf("Failed to load repo contributors: %w", err)
 	}
 
 	allContributors := util.UniqueStrings(append(localContributors, repoContributors...))
 	if len(allContributors) == 0 {
-		fmt.Println("No contributors found")
-		return
+		fmt.Println("⚠️ No contributors found")
+		return nil
 	}
 
-	selectedContributors := []string{}
+	var selectedContributors []string
+
 	prompt := &survey.MultiSelect{
 		Message: "Who's pairing:",
 		Options: allContributors,
 	}
 
-	err = survey.AskOne(prompt, &selectedContributors)
-	if err != nil {
-		fmt.Println(err)
-		return
+	if err := survey.AskOne(prompt, &selectedContributors); err != nil {
+		return err
 	}
 
 	if len(selectedContributors) == 0 {
 		fmt.Println("You must select at least one contributor")
-		return
+		return nil
 	}
 
-	err = git.EnablePairingMode(selectedContributors)
-	if err != nil {
-		fmt.Println(err)
-		return
+	if err := git.EnablePairingMode(selectedContributors); err != nil {
+		return err
 	}
 
 	fmt.Println("🚀 Pairing mode started")
+	return nil
 }
