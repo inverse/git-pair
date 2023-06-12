@@ -20,3 +20,8 @@ jobs:
         uses: golangci/golangci-lint-action@v3
         with:
           version: 'v${{ env.GOLANGCI_LINT_VERSION }}'
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pre-commit/action@v3.0.0
