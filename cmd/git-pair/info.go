@@ -23,6 +23,9 @@ func Info() {
 	}
 
 	for _, contributor := range contributors {
+		if contributor == "" {
+			continue
+		}
 		fmt.Printf("- %s\n", strings.Replace(contributor, git.CoAuthoredBy, "", 1))
 	}
 }
