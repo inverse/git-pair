@@ -4,6 +4,11 @@ vars:
   PROJECT: github.com/inverse/git-pair
 
 tasks:
+  default:
+    deps:
+      - task: format
+      - task: lint
+      - task: build
   build:
     desc: Build project
     deps: [clean]
@@ -24,9 +29,9 @@ tasks:
   lint:
     desc: Lint code
     cmds:
-      - golangci-lint run 
+      - golangci-lint run
     silent: true
-  goreleaser: 
+  goreleaser:
     desc: Perform dev goreleaser
     deps: [clean]
     cmds:

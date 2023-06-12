@@ -16,7 +16,7 @@ It leverages the template feature of git by allowing you to easily managed repo 
 brew install inverse/homebrew-tap/git-pair
 ```
 
-### Arch: 
+### Arch:
 ```bash
 yay -S git-pair-bin
 ```
@@ -35,7 +35,7 @@ And then install:
 apt-get update && apt-get install git-pair
 ```
 
-### For RPM based distro: 
+### For RPM based distro:
 
 Add the following to a new file called `/etc/yum.repos.d/inverse-fury.repo`
 
@@ -60,15 +60,15 @@ Binaries are also distributed in the [releases](https://github.com/inverse/git-p
 By default the tool will look up commit authors from the git history of the repo you are in. However, you can also maintain a list of authors within your home
 directory in a file called `~/.contributors.txt`. This file uses the `Name <email>` format.
 
-To get started run `git-pair [s]tart`, selecting the contributors for the pairing session. 
+To get started run `git-pair [s]tart`, selecting the contributors for the pairing session.
 
 You can find out the current state of contributors running `git-pair [i]nfo`.
 
-One you are done with that pairing session just run `git-pair [e]nd`. 
+One you are done with that pairing session just run `git-pair [e]nd`.
 
 _Note: Sessions are scoped to git repositories by leveraging commit templates._
 
-## Developing 
+## Developing
 
 Built using asdf for managing required development dependencies.
 
