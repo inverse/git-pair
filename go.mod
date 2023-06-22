@@ -3,7 +3,7 @@ module github.com/inverse/git-pair
 go 1.20
 
 require (
-	github.com/AlecAivazis/survey/v2 v2.3.6
+	github.com/AlecAivazis/survey/v2 v2.3.7
 	github.com/urfave/cli/v2 v2.25.7
 )
 
@@ -16,6 +16,6 @@ require (
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
 	golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
-	golang.org/x/term v0.0.0-20210503060354-a79de5458b56 // indirect
-	golang.org/x/text v0.3.8 // indirect
+	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
+	golang.org/x/text v0.4.0 // indirect
 )
