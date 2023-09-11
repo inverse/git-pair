@@ -8,7 +8,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Get Go version from .tool-versions
         run: echo "GO_VERSION=$(cat .tool-versions | grep -oP 'golang \K((\w+.)+\w+)')" >> $GITHUB_ENV
       - name: Get golangci-lint version from .tool-versions
@@ -23,5 +23,5 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pre-commit/action@v3.0.0
