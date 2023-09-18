@@ -37,7 +37,7 @@ jobs:
           version: '0.20.1'
       - name: Get goreleaser version from .tool-versions
         run: echo "GORELEASER_VERSION=$(cat .tool-versions | grep -oP 'goreleaser \K((\w+.)+\w+)')" >> $GITHUB_ENV
-      - uses: goreleaser/goreleaser-action@v4
+      - uses: goreleaser/goreleaser-action@v5
         with:
           distribution: goreleaser
           version: '${{ env.GORELEASER_VERSION }}'
