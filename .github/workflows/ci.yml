@@ -13,7 +13,7 @@ jobs:
         run: echo "GO_VERSION=$(cat .tool-versions | grep -oP 'golang \K((\w+.)+\w+)')" >> $GITHUB_ENV
       - name: Get golangci-lint version from .tool-versions
         run: echo "GOLANGCI_LINT_VERSION=$(cat .tool-versions | grep -oP 'golangci-lint \K((\w+.)+\w+)')" >> $GITHUB_ENV
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
           go-version: '${{ env.GO_VERSION }}'
       - name: golangci-lint
