@@ -70,7 +70,7 @@ _Note: Sessions are scoped to git repositories by leveraging commit templates._
 
 ## Developing
 
-Built using asdf for managing required development dependencies.
+Built using [`mise`](https://github.com/jdx/mise) for managing required development dependencies.
 
 ### Building
 

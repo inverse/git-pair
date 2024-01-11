@@ -9,17 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Get Go version from .tool-versions
-        run: echo "GO_VERSION=$(cat .tool-versions | grep -oP 'golang \K((\w+.)+\w+)')" >> $GITHUB_ENV
-      - name: Get golangci-lint version from .tool-versions
-        run: echo "GOLANGCI_LINT_VERSION=$(cat .tool-versions | grep -oP 'golangci-lint \K((\w+.)+\w+)')" >> $GITHUB_ENV
+      - name: Get Go version from .mise.toml
+        uses: SebRollen/toml-action@v1.0.2
+        id: get-golang-version
+        with:
+          file: .mise.toml
+          field: tools.golang
       - uses: actions/setup-go@v5
         with:
-          go-version: '${{ env.GO_VERSION }}'
+          go-version: '${{ steps.get-golang-version.outputs.value }}'
+      - name: Get golangci-lint version from .mise.toml
+        uses: SebRollen/toml-action@v1.0.2
+        id: get-golangci-lint-version
+        with:
+          file: .mise.toml
+          field: tools.golangci-lint
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
         with:
-          version: 'v${{ env.GOLANGCI_LINT_VERSION }}'
+          version: 'v'${{ steps.get-golangci-lint-version.outputs.value }}'
   pre-commit:
     runs-on: ubuntu-latest
     steps:
