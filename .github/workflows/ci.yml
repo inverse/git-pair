@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Get Go version from .mise.toml
-        uses: SebRollen/toml-action@v1.0.2
+        uses: SebRollen/toml-action@v1.2.0
         id: get-golang-version
         with:
           file: .mise.toml
@@ -19,7 +19,7 @@ jobs:
         with:
           go-version: '${{ steps.get-golang-version.outputs.value }}'
       - name: Get golangci-lint version from .mise.toml
-        uses: SebRollen/toml-action@v1.0.2
+        uses: SebRollen/toml-action@v1.2.0
         id: get-golangci-lint-version
         with:
           file: .mise.toml
