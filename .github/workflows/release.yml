@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
       - run: git fetch --force --tags
       - name: Get Golang version from .mise.toml
-        uses: SebRollen/toml-action@v1.0.2
+        uses: SebRollen/toml-action@v1.2.0
         id: get-golang-version
         with:
           file: .mise.toml
@@ -26,7 +26,7 @@ jobs:
         with:
           go-version: '${{ steps.get-golang-version.outputs.value }}'
       - name: Get nfpm version from .mise.toml
-        uses: SebRollen/toml-action@v1.0.2
+        uses: SebRollen/toml-action@v1.2.0
         id: get-golang-version
         with:
           file: .mise.toml
@@ -44,7 +44,7 @@ jobs:
           name: 'fury'
           version: '0.20.1'
       - name: Get goreleaser version from .mise.toml
-        uses: SebRollen/toml-action@v1.0.2
+        uses: SebRollen/toml-action@v1.2.0
         id: get-goreleaser-version
         with:
           file: .mise.toml
