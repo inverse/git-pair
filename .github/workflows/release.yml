@@ -32,13 +32,13 @@ jobs:
           file: .mise.toml
           field: tools.nfpm
       - name: Setup nfpm
-        uses: supplypike/setup-bin@v3
+        uses: supplypike/setup-bin@v4
         with:
           uri: 'https://github.com/goreleaser/nfpm/releases/download/v${{ env.NFPM_VERSION }}/nfpm_${{ env.NFPM_VERSION }}_Linux_x86_64.tar.gz'
           name: 'nfpm'
           version: '${{ steps.get-nfpm-version.outputs.value }}'
       - name: Setup fury
-        uses: supplypike/setup-bin@v3
+        uses: supplypike/setup-bin@v4
         with:
           uri: 'https://github.com/gemfury/cli/releases/download/v0.20.1/fury_0.20.1_Linux_64bit.tar.gz'
           name: 'fury'
