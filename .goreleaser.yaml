@@ -1,5 +1,5 @@
-# This is an example .goreleaser.yml file with some sensible defaults.
-# Make sure to check the documentation at https://goreleaser.com
+version: 2
+
 before:
   hooks:
     - go mod tidy
@@ -42,10 +42,10 @@ aurs:
       install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/git-pair/LICENSE"
 brews:
   - name: git-pair
-    tap:
+    repository:
       owner: inverse
       name: homebrew-tap
-    folder: Formula
+    directory: Formula
     description: 'A simple CLI app to make it easier for pairing for co-authoring commits'
     homepage: 'https://github.com/inverse/git-pair/'
     license: MIT

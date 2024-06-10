@@ -35,4 +35,4 @@ tasks:
     desc: Perform dev goreleaser
     deps: [clean]
     cmds:
-      - PROJECT={{.PROJECT}} goreleaser release --snapshot --clean --skip-publish
+      - PROJECT={{.PROJECT}} goreleaser release --snapshot --clean --skip=publish
