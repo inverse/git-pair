@@ -1,6 +1,6 @@
 [tools]
-golang = "1.22.4"
-golangci-lint = "1.59.0"
-goreleaser = "2.0.0"
-nfpm = "2.37.1"
-task = "3.37.2"
+golang = "1.22.10"
+golangci-lint = "1.62.2"
+goreleaser = "2.5.0"
+nfpm = "2.41.1"
+task = "3.40.1"
