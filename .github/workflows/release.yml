@@ -27,7 +27,7 @@ jobs:
           go-version: '${{ steps.get-golang-version.outputs.value }}'
       - name: Get nfpm version from .mise.toml
         uses: SebRollen/toml-action@v1.2.0
-        id: get-golang-version
+        id: get-nfpm-version
         with:
           file: .mise.toml
           field: tools.nfpm
