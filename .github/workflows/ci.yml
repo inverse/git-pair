@@ -25,7 +25,7 @@ jobs:
           file: .mise.toml
           field: tools.golangci-lint
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v5
+        uses: golangci/golangci-lint-action@v6
         with:
           version: 'v${{ steps.get-golangci-lint-version.outputs.value }}'
   pre-commit:
