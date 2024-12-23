@@ -34,7 +34,7 @@ jobs:
       - name: Setup nfpm
         uses: supplypike/setup-bin@v4
         with:
-          uri: 'https://github.com/goreleaser/nfpm/releases/download/v${{ env.NFPM_VERSION }}/nfpm_${{ env.NFPM_VERSION }}_Linux_x86_64.tar.gz'
+          uri: 'https://github.com/goreleaser/nfpm/releases/download/v${{ steps.get-nfpm-version.outputs.value }}/nfpm_${{ steps.get-nfpm-version.outputs.value }}_Linux_x86_64.tar.gz'
           name: 'nfpm'
           version: '${{ steps.get-nfpm-version.outputs.value }}'
       - name: Setup fury
