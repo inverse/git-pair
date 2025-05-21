@@ -1,10 +1,13 @@
 module github.com/inverse/git-pair
 
-go 1.20
+go 1.22
+
+toolchain go1.24.3
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
 	github.com/urfave/cli/v2 v2.27.6
+	github.com/urfave/cli/v3 v3.3.3
 )
 
 require (
