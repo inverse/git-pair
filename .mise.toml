@@ -1,5 +1,5 @@
 [tools]
-golang = "1.22.10"
+golang = "1.24.3"
 golangci-lint = "2.1.6"
 goreleaser = "2.5.0"
 nfpm = "2.41.1"
