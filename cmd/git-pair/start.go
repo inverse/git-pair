@@ -12,12 +12,12 @@ import (
 func Start() error {
 	localContributors, err := contributors.GetLocalContributors()
 	if err != nil {
-		return fmt.Errorf("Failed to load local contributors: %w", err)
+		return fmt.Errorf("failed to load local contributors: %w", err)
 	}
 
 	repoContributors, err := git.GetRepoContributors()
 	if err != nil {
-		return fmt.Errorf("Failed to load repo contributors: %w", err)
+		return fmt.Errorf("failed to load repo contributors: %w", err)
 	}
 
 	allContributors := util.UniqueStrings(append(localContributors, repoContributors...))

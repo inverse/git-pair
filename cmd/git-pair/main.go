@@ -20,7 +20,7 @@ func main() {
 		Usage:   "A tool to make it easier for git based pairing for co-authoring commits",
 		Before: func(cCtx *cli.Context) error {
 			if !git.IsGitRepo() {
-				return errors.New("Not executed from a git repository")
+				return errors.New("not executed from a git repository")
 			}
 
 			return nil
