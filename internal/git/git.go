@@ -46,7 +46,13 @@ func createTemplateFile(contributors []string, templateFilePath string) error {
 		return err
 	}
 
-	defer templateFile.Close()
+	defer func() {
+		closeErr := templateFile.Close()
+
+		if closeErr != nil && err == nil {
+			err = closeErr
+		}
+	}()
 
 	_, err = templateFile.WriteString("\n\n")
 	if err != nil {
@@ -54,13 +60,13 @@ func createTemplateFile(contributors []string, templateFilePath string) error {
 	}
 
 	for _, contributor := range contributors {
-		_, err := templateFile.WriteString(fmt.Sprintf("%s%s \n", CoAuthoredBy, contributor))
+		_, err := fmt.Fprintf(templateFile, "%s%s \n", CoAuthoredBy, contributor)
 		if err != nil {
 			return err
 		}
 	}
 
-	return nil
+	return err
 }
 
 func enableGitTemplateConfig(templateFilePath string) error {
@@ -146,7 +152,10 @@ func DisablePairingMode() error {
 		return nil
 	}
 
-	os.Remove(templateFilePath)
+	err := os.Remove(templateFilePath)
+	if err != nil {
+		return err
+	}
 
 	return disableGitTemplateConfig()
 }
@@ -168,12 +177,22 @@ func ReadTemplateFile() ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer file.Close()
+
+	defer func() {
+		closeErr := file.Close()
+
+		if closeErr != nil && err == nil {
+			err = closeErr
+		}
+	}()
 
 	var lines []string
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		lines = append(lines, scanner.Text())
 	}
-	return lines, scanner.Err()
+
+	err = scanner.Err()
+
+	return lines, err
 }

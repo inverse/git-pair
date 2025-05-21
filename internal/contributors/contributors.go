@@ -21,7 +21,13 @@ func GetLocalContributors() ([]string, error) {
 		return nil, err
 	}
 
-	defer file.Close()
+	defer func() {
+		closeErr := file.Close()
+
+		if closeErr != nil && err == nil {
+			err = closeErr
+		}
+	}()
 
 	var lines []string
 	scanner := bufio.NewScanner(file)
@@ -29,5 +35,7 @@ func GetLocalContributors() ([]string, error) {
 		lines = append(lines, scanner.Text())
 	}
 
-	return lines, scanner.Err()
+	err = scanner.Err()
+
+	return lines, err
 }
