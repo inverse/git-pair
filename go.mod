@@ -6,7 +6,7 @@ toolchain go1.24.6
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
-	github.com/urfave/cli/v2 v2.27.7
+	github.com/urfave/cli/v3 v3.3.8
 	github.com/urfave/cli/v3 v3.3.8
 )
 
